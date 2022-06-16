@@ -7,5 +7,9 @@ import com.example.springBoot.Demo.entity.Department;
 
 @Repository
 public interface DepartmentRepo extends JpaRepository<Department, Long>{
-
+	
+	public Department findByDepName(String depName);
+	
+	public Department findByDepNameIgnoreCase(String depName);
+	
 }

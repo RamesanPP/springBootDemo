@@ -1,6 +1,7 @@
 package com.example.springBoot.Demo.service;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,4 +25,46 @@ public class DepartmentServiceImpl implements DepartmentService{
 	public List<Department> fetchDepartmentList(){
 		return depRepo.findAll();
 	}
+
+	@Override
+	public Department fetchDepById(Long depId) {
+		return depRepo.findById(depId).get();
+	}
+
+	@Override
+	public void deleteDepById(Long depId) {
+		depRepo.deleteById(depId);
+	}
+
+	@Override
+	public Department updateDep(Long depId, Department department) {
+		
+		Department depDB = depRepo.findById(depId).get();
+		
+		if(Objects.nonNull(department.getDepName()) &&
+				!"".equalsIgnoreCase(department.getDepName())) {
+			depDB.setDepName(department.getDepName());
+		}
+		
+		if(Objects.nonNull(department.getDepAddress()) &&
+				!"".equalsIgnoreCase(department.getDepAddress())) {
+			depDB.setDepAddress(department.getDepAddress());
+		}
+		
+		if(Objects.nonNull(department.getDepCode()) &&
+				!"".equalsIgnoreCase(department.getDepCode())) {
+			depDB.setDepCode(department.getDepCode());
+		}
+		
+		return depRepo.save(depDB);
+		
+	}
+
+	@Override
+	public Department fetchDepByName(String depName) {
+		return depRepo.findByDepNameIgnoreCase(depName);
+	}
+	
+
+	
 }
