@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.springBoot.Demo.entity.Department;
 import com.example.springBoot.Demo.error.DepartmentNotFoundException;
 import com.example.springBoot.Demo.service.DepartmentService;
+import com.example.springBoot.Demo.service.SequenceGeneratorService;
 
 @RestController
 public class DepartmentController {
@@ -25,11 +26,15 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentService depService;
 	
+	@Autowired
+	private SequenceGeneratorService seqGenService;
+	
 	private final Logger logr = LoggerFactory.getLogger(DepartmentController.class);
 	
 	@PostMapping("/departments")
 	public Department saveDepartment(@Valid @RequestBody Department department) {
 		logr.info("Inside saveDepartment of DepartmentController");
+		department.setDepId(seqGenService.getSequenceNumber(Department.SEQUENCE_NAME));
 		return depService.saveDepartment(department);
 		
 	}
