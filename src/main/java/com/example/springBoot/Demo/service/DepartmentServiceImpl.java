@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 
 import com.example.springBoot.Demo.entity.Department;
 import com.example.springBoot.Demo.error.DepartmentNotFoundException;
-import com.example.springBoot.Demo.repository.DepartmentRepo;
+import com.example.springBoot.Demo.repository.DepartmentRepository;
 
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService{
 
 	@Autowired
-	private DepartmentRepo depRepo;
+	private DepartmentRepository depRepo;
 	
 	@Override
 	public Department saveDepartment(Department department) {

@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.example.springBoot.Demo.entity.Department;
-import com.example.springBoot.Demo.repository.DepartmentRepo;
+import com.example.springBoot.Demo.repository.DepartmentRepository;
 
 @SpringBootTest
 class DepartmentServiceTest {
@@ -20,7 +20,7 @@ class DepartmentServiceTest {
     private DepartmentService departmentService;
 
     @MockBean
-    private DepartmentRepo depRepo;
+    private DepartmentRepository depRepo;
 
     @BeforeEach
     void setUp() {
@@ -38,7 +38,7 @@ class DepartmentServiceTest {
     }
 
     @Test
-    @DisplayName("Get Data based on Valida Department Name")
+    @DisplayName("Get Data based on Valid Department Name")
     public void whenValidDepartmentName_thenDepartmentShouldFound() {
         String departmentName = "IT";
         Department found =

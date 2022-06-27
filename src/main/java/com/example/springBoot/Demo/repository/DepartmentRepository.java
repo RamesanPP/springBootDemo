@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.example.springBoot.Demo.entity.Department;
 
 @Repository
-public interface DepartmentRepo extends MongoRepository<Department, Long>{
+public interface DepartmentRepository extends MongoRepository<Department, Long>{
 	
 	public Department findByDepName(String depName);
 	
