@@ -5,4 +5,5 @@ Starter Demo Project for Spring Boot - CRUD Operations
 * working for mongodb
 * Sample test cases
 * Swagger2 
-* Actuator
+* Actuator (endpoints exposed)
+* Code Coverage Reports(JaCoCo)
